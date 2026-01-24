@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles.css">
+    <title>Study Partner</title>
+</head>
+
+<body>
+    <div class="layout">
+        <header>
+            <div class="icons">
+                <a href="index.html"><img src="home icon.png"></a>
+                <a href="timer.html"><img src="home icon.png"></a>
+                <a href="settings.html"><img src="home icon.png"></a>
+            </div>
+            <div class="verticalLine"></div>
+        </header>
+        <main class="content">
+            <label id="nameInputTag">Name</label><br><br>
+            <input type="text" id="nameInput" placeholder="Enter your name!"><br><br><br>
+            <label id="pfpInputTag">Profile picture</label><br><br>
+            <div class="image-preview"><img src="" alt="" id="pfpimg" class="hidden"></div><br><br>
+            <label for="pfpinput" class="custopmFileLabel">Upload a photo</label>
+            <input type="file" id="pfpinput" accept="image/*" hidden><br><br><br>
+            <button id="saveBtn">Save</button>
+        </main>
+    </div>
+    <script src="settings.js"></script>
+</body>
+
+</html>
