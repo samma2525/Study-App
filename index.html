@@ -4,22 +4,24 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="styles.css">
+    <script src="background.js"></script>
     <title>Study Partner</title>
 </head>
 
 <body>
+    <div id="background"></div>
     <div class="layout">
-        <header>
+        <header class="headerstuff">
             <div class="icons">
                 <a href="index.html"><img src="home icon.png"></a>
-                <a href="timer.html"><img src="home icon.png"></a>
-                <a href="settings.html"><img src="home icon.png"></a>
+                <a href="timer.html"><img src="clock-icon.png"></a>
+                <a href="settings.html"><img src="person-icon.png"></a>
             </div>
-            <div class="verticalLine"></div>
         </header>
+        <div class="verticalLine"></div>
         <main class="content">
             <div id="profile">
-                <img src="" alt="profilephoto" id="pfpImg">
+                <img src="strawberries.png" alt="profilephoto" id="pfpImg">
                 <section id="greetings">
                     <br>
                     <h1>Hello, <span id="userName">Guest</span>!</h1>
@@ -30,18 +32,31 @@
             </div>
             <hr>
             <div class="previews ">
-                <section class="secMain ">
-                    <h4>To do list</h4>
-                    <input type="text" id="taskInput">
-                    <button>Add</button>
+                <section class="secMain">
+                    <div class="toDoApp">
+                        <h4>To do list</h4>
+                        <input type="text" id="taskInput" placeholder="Add your task">
+                        <button id="addBtn">Add</button>
+                    </div>
+                    <ul id="listContainer">
+                        <!-- Example list items-->
+                        <!--
+                        <li class="checked">Task 1</li>
+                            <li>Task 2</li>
+                            <li> Task 3</li> -->
+                    </ul>
                 </section>
-                <section class="secMain ">
-                    <h4>Latest Insights</h4>
+                <section class="secMain">
+                    <div id="chartsSec">
+                        <h4>Latest Insights</h4>
+                        <canvas id="studyChart"></canvas>
+                    </div>
                 </section>
             </div>
         </main>
     </div>
-    <script src="homepage.js "></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="homepage.js"></script>
 </body>
 
 </html>

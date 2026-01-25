@@ -4,12 +4,14 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="styles.css">
-    <title>Study Partner</title>
+    <script src="background.js"></script>
+    <title>Study Partner: Settings</title>
 </head>
 
 <body>
+    <div id="background"></div>
     <div class="layout">
-        <header>
+        <header class="headerstuff">
             <div class="icons">
                 <a href="index.html"><img src="home icon.png"></a>
                 <a href="timer.html"><img src="home icon.png"></a>
@@ -19,12 +21,14 @@
         </header>
         <main class="content">
             <label id="nameInputTag">Name</label><br><br>
-            <input type="text" id="nameInput" placeholder="Enter your name!"><br><br><br>
+            <input type="text" id="nameInput" placeholder="Enter your name!">
+            <button id="nameSaveBtn" class="saveButton">Save Name</button><br><br>
+            <hr><br>
             <label id="pfpInputTag">Profile picture</label><br><br>
             <div class="image-preview"><img src="" alt="" id="pfpimg" class="hidden"></div><br><br>
             <label for="pfpinput" class="custopmFileLabel">Upload a photo</label>
-            <input type="file" id="pfpinput" accept="image/*" hidden><br><br><br>
-            <button id="saveBtn">Save</button>
+            <input type="file" id="pfpinput" accept="image/*" hidden>
+            <button id="saveBtn" class="saveButton">Save Profile Picture</button>
         </main>
     </div>
     <script src="settings.js"></script>

@@ -4,25 +4,27 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="styles.css">
+    <script src="background.js"></script>
     <title>Study Partner: Pomodoro Timer</title>
 </head>
 
 <body>
+    <div id="background"></div>
     <div class="layout">
-        <header>
+        <header class="headerstuff">
             <div class="icons">
                 <a href="index.html"><img src="home icon.png"></a>
                 <a href="timer.html"><img src="home icon.png"></a>
                 <a href="settings.html"><img src="home icon.png"></a>
             </div>
-            <div class="verticalLine"></div>
         </header>
+        <div class="verticalLine"></div>
         <main class="content">
             <div class="pomodoro">
                 <h1>
                     Pomodoro Timer
                 </h1>
-                <div class="previews">
+                <div class="previews2">
                     <div id="pomodorosection">
                         <p class="timer" id="timer"> 25:00
                         </p>
@@ -34,7 +36,9 @@
                             <button id="start" class="pomodoroButton">Start</button>
                             <button id="stop" class="pomodoroButton">Stop</button>
                             <button id="restart" class="pomodoroButton">Restart</button></div>
-                    </div>
+                    </div><br>
+                    <button id="add5Btn">+5 mintues</button>
+                    <button id="sub5Btn">-5 mintues</button>
                 </div>
             </div>
         </main>
