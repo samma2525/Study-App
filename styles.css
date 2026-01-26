@@ -351,6 +351,7 @@ canvas {
     height: 300px;
     z-index: 0;
     pointer-events: none;
+    opacity: 0.4;
 }
 
 #background img {
