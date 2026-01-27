@@ -43,6 +43,7 @@ window.addEventListener("load", () => {
         img.style.width = size + "px";
         img.style.height = size + "px";
         img.style.position = "absolute";
+        img.style.opacity = 0.4;
 
         container.appendChild(img);
     }
