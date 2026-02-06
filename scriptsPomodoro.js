@@ -19,12 +19,14 @@ function formatTime(seconds) {
 }
 
 add5Btn.addEventListener("click", () => {
+    if (interval) return;
     timeLeft += 5 * 60;
     defaultTime += 5 * 60;
     timerDisplay.textContent = formatTime(timeLeft);
 })
 
 sub5Btn.addEventListener("click", () => {
+    if (interval) return;
     timeLeft -= 5 * 60;
     if (timeLeft < 0) timeLeft = 0;
     defaultTime = Math.max(defaultTime - 5 * 60, 0);
@@ -40,20 +42,28 @@ const updateTimer = () => {
 }
 
 const startTimer = () => {
+    if (interval) return;
     interval = setInterval(() => {
         timeLeft--;
         updateTimer();
 
-        if (timeLeft === 0) {
+        if (timeLeft <= 0) {
             clearInterval(interval);
-            saveSession(defaultTime / 25);
+            interval = null;
+
+            const studiedMinutes = defalutTime / 60;
+            saveSession(studiedMinutes);
             alert("Time's up!");
             timeLeft = defaultTime;
+            updateTimer();
         }
     }, 1000)
 }
 
-const stopTimer = () => clearInterval(interval);
+const stopTimer = () => {
+    clearInterval(interval);
+    interval = null;
+}
 
 const restartTimer = () => {
     clearInterval(interval);
@@ -70,7 +80,7 @@ function saveSession(minutes) {
 
     sessions.push({
         date: new Date().toISOString().split("T")[0],
-        mintues: minutes
+        minutes: minutes
     });
 
     localStorage.setItem("sessions", JSON.stringify(sessions));
