@@ -39,7 +39,7 @@ function addTask() {
         alert("you must write something");
     } else {
         let li = document.createElement("li");
-        li.innerHTML = inputBox.value;
+        li.textContent = inputBox.value;
         listContainer.appendChild(li);
         let span = document.createElement("span");
         span.innerHTML = "\u00d7";
@@ -89,6 +89,8 @@ function getDailyStudyData() {
 
 function renderStudyChart() {
     const totals = getDailyStudyData();
+    const canvas = document.getElementById("studyChart");
+    if (!canvas) return;
 
     studyChart = new Chart(document.getElementById("studyChart"), {
         type: "bar",
@@ -112,6 +114,15 @@ function renderStudyChart() {
             }
         }
     })
+}
+
+function updateChart() {
+    if (!studyChart) return;
+    const totals = getDailyStudyData();
+
+    studyChart.data.labels = Object.keys(totals);
+    studyChart.data.datasets[0].data = Object.values(totals);
+    studyChart.update();
 }
 
 document.addEventListener("DOMContentLoaded", () => { renderStudyChart(); });

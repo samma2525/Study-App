@@ -9,6 +9,7 @@ const timerDisplay = document.getElementById("timer");
 let defaultTime = 1500;
 let timeLeft = defaultTime;
 let interval;
+let alarmTimeout;
 
 timerDisplay.textContent = formatTime(timeLeft);
 
@@ -43,32 +44,50 @@ const updateTimer = () => {
 
 const startTimer = () => {
     if (interval) return;
+
+    const endTime = Date.now() + timeLeft * 1000;
+
     interval = setInterval(() => {
-        timeLeft--;
+        timeLeft = Math.max(0, Math.floor((endTime - Date.now()) / 1000));
         updateTimer();
 
         if (timeLeft <= 0) {
             clearInterval(interval);
             interval = null;
 
-            const studiedMinutes = defalutTime / 60;
+            const studiedMinutes = defaultTime / 60;
             saveSession(studiedMinutes);
-            alert("Time's up!");
+            const alarm = document.getElementById("alarmSound");
+            alarm.currentTime = 0;
+            alarm.play();
+            clearTimeout(alarmTimeout)
+            alarmTimeout = setTimeout(() => {
+                alarm.pause();
+                alarm.currentTime = 0;
+            }, 5000);
             timeLeft = defaultTime;
             updateTimer();
         }
-    }, 1000)
+    }, 1000);
 }
 
 const stopTimer = () => {
     clearInterval(interval);
     interval = null;
+    const alarm = document.getElementById("alarmSound");
+    alarm.pause();
+    alarm.currentTime = 0;
+    clearTimeout(alarmTimeout);
 }
 
 const restartTimer = () => {
     clearInterval(interval);
     timeLeft = defaultTime;
     updateTimer();
+    const alarm = document.getElementById("alarmSound");
+    alarm.pause();
+    alarm.currentTime = 0;
+    clearTimeout(alarmTimeout);
 }
 
 start.addEventListener("click", startTimer);
@@ -80,7 +99,7 @@ function saveSession(minutes) {
 
     sessions.push({
         date: new Date().toISOString().split("T")[0],
-        minutes: minutes
+        minutes: Number(minutes)
     });
 
     localStorage.setItem("sessions", JSON.stringify(sessions));
