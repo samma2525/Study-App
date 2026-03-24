@@ -15,3 +15,5 @@ Settings Page:
 You could change the name or profile picture in the home page from there, to make it look just as you like!
 
 There is a random strawberry pattern each time you reload the pages; it is applied to all pages.
+
+<img width="400" alt="Study app screen shot" src="https://github.com/user-attachments/assets/fc6a8bc7-3d2d-4146-a811-ff2232d28603" />
